@@ -1,0 +1,177 @@
+/* ---------------------------------------------------------------
+   MiniPress styles. One file, no framework.
+   Reading side = serif, generous measure. Admin side = sans, dense.
+   --------------------------------------------------------------- */
+
+:root {
+  --paper:  #eff2ec;
+  --ink:    #16221e;
+  --muted:  #59665f;
+  --rule:   #c5cec3;
+  --accent: #15655a;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:  ui-sans-serif, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 1.5rem 4rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1.0625rem/1.65 var(--serif);
+  -webkit-text-size-adjust: 100%;
+}
+body.admin { font-family: var(--sans); line-height: 1.5; }
+
+main { max-width: 42rem; margin: 0 auto; }
+body.admin main { max-width: 56rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- masthead ------------------------------------------------- */
+.masthead {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.75rem 0 1.25rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+body.admin .masthead { max-width: 56rem; font-family: var(--sans); }
+.wordmark {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.masthead nav a { margin-left: 1rem; font-size: 0.9rem; }
+
+/* --- front page ----------------------------------------------- */
+.intro { padding: 2.5rem 0 1.5rem; }
+.intro h1 { margin: 0 0 0.3rem; font-size: 2.25rem; line-height: 1.15; font-weight: 600; }
+.intro p { margin: 0; color: var(--muted); }
+
+.archive { list-style: none; margin: 0; padding: 0; }
+.archive li { padding: 1.75rem 0; border-top: 1px solid var(--rule); }
+.archive h2 { margin: 0.15rem 0 0.4rem; font-size: 1.35rem; font-weight: 600; line-height: 1.25; }
+.archive h2 a { color: var(--ink); text-decoration: none; }
+.archive h2 a:hover { color: var(--accent); }
+.archive p { margin: 0 0 0.35rem; color: #33403a; }
+
+time { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+.byline { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }
+
+/* Wide screens: hang the date in the left margin, like a printed archive. */
+@media (min-width: 60rem) {
+  .archive li { position: relative; }
+  .archive time { position: absolute; left: -9rem; top: 1.95rem; width: 8rem; text-align: right; }
+}
+
+/* --- single post ---------------------------------------------- */
+.entry { padding: 2.5rem 0 1rem; }
+.entry h1 { margin: 0.2rem 0 0.3rem; font-size: 2rem; line-height: 1.2; font-weight: 600; }
+.entry p { margin: 0 0 1.15rem; }
+.entry .back { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 0.9rem; }
+
+/* --- admin ----------------------------------------------------- */
+.panel { padding: 2rem 0; }
+.panel.narrow { max-width: 22rem; }
+.panel h1 { font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.panel-head h1 { margin: 0; }
+
+.hint  { color: var(--muted); font-size: 0.85rem; }
+.empty { color: var(--muted); }
+
+label { display: block; margin: 1rem 0 0.3rem; font-size: 0.85rem; color: var(--muted); }
+input, textarea, select {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+  color: var(--ink);
+  background: #fbfcfa;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+}
+textarea { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 0.92rem; line-height: 1.55; resize: vertical; }
+select { width: auto; }
+
+button, .button {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.55rem 1.1rem;
+  font: inherit;
+  font-size: 0.92rem;
+  color: #fbfcfa;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button { margin-top: 0; }
+button:hover, .button:hover { background: #0f4f46; }
+.actions { display: flex; align-items: center; gap: 1.25rem; }
+.actions a { font-size: 0.9rem; }
+
+table.list { width: 100%; margin-top: 1.5rem; border-collapse: collapse; font-size: 0.93rem; }
+table.list th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 0 0 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+table.list td { padding: 0.8rem 0.6rem 0.8rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.list td:first-child { padding-left: 0; }
+.slug { display: block; color: var(--muted); font-size: 0.8rem; }
+
+.status { font-size: 0.8rem; padding: 0.12rem 0.45rem; border: 1px solid var(--rule); border-radius: 2px; }
+.status-published { color: var(--accent); border-color: var(--accent); }
+.status-draft { color: var(--muted); }
+
+.row-actions { display: flex; gap: 0.9rem; align-items: baseline; }
+.row-actions form { display: inline; }
+.link-button {
+  margin: 0; padding: 0;
+  background: none; border: none;
+  color: #8a3324;
+  font-size: 0.93rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.link-button:hover { background: none; color: #6d2719; }
+
+/* --- messages -------------------------------------------------- */
+.flash, .error {
+  margin: 1.5rem 0 0;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  border-left: 3px solid var(--accent);
+  background: #e3e9df;
+}
+.error { border-left-color: #8a3324; color: #6d2719; }
+ul.error { padding-left: 1.6rem; }
+
+.colophon {
+  max-width: 42rem;
+  margin: 3.5rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
